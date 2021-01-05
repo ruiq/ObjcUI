@@ -8,5 +8,8 @@
 #ifndef ObjcUI_h
 #define ObjcUI_h
 
+#import <UIView+PE.h>
+#import <UIStackView+PEContainer.h>
+
 
 #endif /* ObjcUI_h */
