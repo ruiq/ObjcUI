@@ -7,12 +7,12 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'ObjcUI'
+  s.name             = 'OCUI'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of ObjcUI.'
+  s.summary          = 'objc ui framework.'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  objc ui framework.
                        DESC
 
   s.homepage         = 'https://github.com/ruiq/ObjcUI'

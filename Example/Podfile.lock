@@ -148,7 +148,7 @@ PODS:
   - JKCategories/UIKit/UIViewController (1.9.2)
   - JKCategories/UIKit/UIWindow (1.9.2)
   - Masonry (1.1.0)
-  - ObjcUI (0.1.0):
+  - OCUI (0.1.0):
     - JKCategories (~> 1.9.1)
     - Masonry (~> 1.1.0)
   - Specta (1.0.7)
@@ -157,7 +157,7 @@ DEPENDENCIES:
   - Expecta
   - "Expecta+Snapshots"
   - FBSnapshotTestCase
-  - ObjcUI (from `../`)
+  - OCUI (from `../`)
   - Specta
 
 SPEC REPOS:
@@ -170,7 +170,7 @@ SPEC REPOS:
     - Specta
 
 EXTERNAL SOURCES:
-  ObjcUI:
+  OCUI:
     :path: "../"
 
 SPEC CHECKSUMS:
@@ -179,9 +179,9 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   JKCategories: 83d85cc7455e265fbdb2f4add3c77c643fad57f5
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  ObjcUI: b8dab57c6ea1e7d4f1708bb2db969c69bb4ec76b
+  OCUI: 4d72d5f54f58d6c577b74d9df5a3fabcba46a7b1
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 303e2279852852c20c21eb55d8ab4d3734d34cfb
+PODFILE CHECKSUM: eddd5af269bb8df1d26ed11ff6538bc513db631f
 
 COCOAPODS: 1.10.0

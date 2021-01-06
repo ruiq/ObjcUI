@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'ObjcUI_Example' do
-  pod 'ObjcUI', :path => '../'
+  pod 'OCUI', :path => '../'
 
   target 'ObjcUI_Tests' do
     inherit! :search_paths
