@@ -201,8 +201,8 @@
     [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_greaterThanOrEqualTo(CGFLOAT_MAX).priority(250);
     }];
-    [view setContentCompressionResistancePriority:200 forAxis:UILayoutConstraintAxisHorizontal];
-    [view setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisHorizontal];
+    [view setContentCompressionResistancePriority:200 forAxis:UILayoutConstraintAxisVertical];
+    [view setContentHuggingPriority:200 forAxis:UILayoutConstraintAxisVertical];
     return view;
 }
 
