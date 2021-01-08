@@ -66,7 +66,7 @@
 		C49923A6BAAB917DD3540C8C /* Pods_ObjcUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjcUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8EDDA5DBA59FE814CBF3E73 /* Pods-ObjcUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-ObjcUI_Example/Pods-ObjcUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F492D437941D54EF816A470D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		FC5E0F61BFC5E89D1A424E83 /* ObjcUI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ObjcUI.podspec; path = ../ObjcUI.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FC5E0F61BFC5E89D1A424E83 /* OCUI.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OCUI.podspec; path = ../OCUI.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 		60FF7A9C1954A5C5007DD14C /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				FC5E0F61BFC5E89D1A424E83 /* ObjcUI.podspec */,
+				FC5E0F61BFC5E89D1A424E83 /* OCUI.podspec */,
 				F492D437941D54EF816A470D /* README.md */,
 				B0103E4F9B036705C10E2FB3 /* LICENSE */,
 			);
