@@ -22,6 +22,9 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		BB2361BA25B1843200FC8B52 /* PXXViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2361B925B1843200FC8B52 /* PXXViewController2.m */; };
+		BB2361CE25B184E100FC8B52 /* PXXMyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2361CD25B184E100FC8B52 /* PXXMyTableViewCell.m */; };
+		BB2361D325B184F100FC8B52 /* PXXUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2361D225B184F100FC8B52 /* PXXUser.m */; };
 		EF58F068A77451278760F628 /* Pods_ObjcUI_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C49923A6BAAB917DD3540C8C /* Pods_ObjcUI_Example.framework */; };
 		FFA4C1899528BC467DEEE0E3 /* Pods_ObjcUI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E0BE8D23E9018127DE07E2 /* Pods_ObjcUI_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,12 @@
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A809F0F80883A31377375FC5 /* Pods-ObjcUI_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcUI_Tests.release.xcconfig"; path = "Target Support Files/Pods-ObjcUI_Tests/Pods-ObjcUI_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B0103E4F9B036705C10E2FB3 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		BB2361B825B1843200FC8B52 /* PXXViewController2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXXViewController2.h; sourceTree = "<group>"; };
+		BB2361B925B1843200FC8B52 /* PXXViewController2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXXViewController2.m; sourceTree = "<group>"; };
+		BB2361CC25B184E100FC8B52 /* PXXMyTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXXMyTableViewCell.h; sourceTree = "<group>"; };
+		BB2361CD25B184E100FC8B52 /* PXXMyTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXXMyTableViewCell.m; sourceTree = "<group>"; };
+		BB2361D125B184F100FC8B52 /* PXXUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PXXUser.h; sourceTree = "<group>"; };
+		BB2361D225B184F100FC8B52 /* PXXUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PXXUser.m; sourceTree = "<group>"; };
 		C49923A6BAAB917DD3540C8C /* Pods_ObjcUI_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ObjcUI_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8EDDA5DBA59FE814CBF3E73 /* Pods-ObjcUI_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ObjcUI_Example.debug.xcconfig"; path = "Target Support Files/Pods-ObjcUI_Example/Pods-ObjcUI_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F492D437941D54EF816A470D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -137,6 +146,9 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* PXXViewController.h */,
 				6003F5A6195388D20070C39A /* PXXViewController.m */,
+				BB2361B825B1843200FC8B52 /* PXXViewController2.h */,
+				BB2361B925B1843200FC8B52 /* PXXViewController2.m */,
+				BB2361CB25B184D100FC8B52 /* list */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -183,6 +195,17 @@
 				B0103E4F9B036705C10E2FB3 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		BB2361CB25B184D100FC8B52 /* list */ = {
+			isa = PBXGroup;
+			children = (
+				BB2361CC25B184E100FC8B52 /* PXXMyTableViewCell.h */,
+				BB2361CD25B184E100FC8B52 /* PXXMyTableViewCell.m */,
+				BB2361D125B184F100FC8B52 /* PXXUser.h */,
+				BB2361D225B184F100FC8B52 /* PXXUser.m */,
+			);
+			name = list;
 			sourceTree = "<group>";
 		};
 		BB3D61AB3B06981C36F12F0B /* Pods */ = {
@@ -374,12 +397,20 @@
 				"${BUILT_PRODUCTS_DIR}/JKCategories/JKCategories.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/OCUI/OCUI.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveSwift/ReactiveSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JKCategories.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OCUI.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveObjC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -393,7 +424,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB2361BA25B1843200FC8B52 /* PXXViewController2.m in Sources */,
 				6003F59E195388D20070C39A /* PXXAppDelegate.m in Sources */,
+				BB2361CE25B184E100FC8B52 /* PXXMyTableViewCell.m in Sources */,
+				BB2361D325B184F100FC8B52 /* PXXUser.m in Sources */,
 				6003F5A7195388D20070C39A /* PXXViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -525,6 +559,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ObjcUI/ObjcUI-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/JKCategories/JKCategories.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/Masonry/Masonry.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/OCUI/OCUI.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/**",
+				);
 				INFOPLIST_FILE = "ObjcUI/ObjcUI-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";

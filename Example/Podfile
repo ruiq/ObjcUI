@@ -4,6 +4,9 @@ platform :ios, '9.0'
 
 target 'ObjcUI_Example' do
   pod 'OCUI', :path => '../'
+  pod 'ReactiveCocoa', '~> 10.1'
+  pod 'ReactiveObjC','~> 3.1.1'
+  pod 'YYModel'
 
   target 'ObjcUI_Tests' do
     inherit! :search_paths
