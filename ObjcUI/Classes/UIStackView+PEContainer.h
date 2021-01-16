@@ -20,4 +20,17 @@
 
 -(void)updateWithArrangedSubviews:(NSArray<UIView *> *)views;
 
+
+-(UIStackView *(^)(UIStackViewAlignment))pe_alignment;
+-(UIStackView *(^)(CGFloat))pe_spacing;
+
 @end
+
+static inline UIStackView* HStack(NSArray *subviews) {
+    return [UIStackView rowWithViews:subviews];
+}
+
+static inline UIStackView* VStack(NSArray *subviews) {
+    return [UIStackView columnWithViews:subviews];
+}
+ 

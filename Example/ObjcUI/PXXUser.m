@@ -10,4 +10,9 @@
 
 @implementation PXXUser
 
++(NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
+{
+    return @{@"tags":NSString.class};
+}
+
 @end

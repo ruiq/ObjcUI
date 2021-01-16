@@ -11,6 +11,8 @@
 #import <UIStackView+PEContainer.h>
 #import <Masonry.h>
 #import <NSArray+JKBlock.h>
+#import <UILabel+OCUI.h>
+
 
 @interface PXXViewController ()
 
@@ -55,7 +57,7 @@
         kHeight(120),
         [UILabel labelWithFont:[UIFont systemFontOfSize:16] textColor:UIColor.blackColor text:@"测试表格"],
         kHeight(20),
-        UIView.spacerX.pe_height(1).pe_backgroundColor(UIColor.grayColor),
+        SpacerX(0).pe_height(1).pe_backgroundColor(UIColor.grayColor),
         kHeight(20),
         /// header
         [UIStackView rowWithViews:[data jk_map:^id(id object) {
@@ -78,8 +80,8 @@
         }]
         ]].pe_width(UIScreen.mainScreen.bounds.size.width / data.count);
     }] alignment:UIStackViewAlignmentCenter],
-        kHeight(20),
-        UIView.spacerX.pe_height(1).pe_backgroundColor(UIColor.grayColor),
+        SpacerY(20),
+        SpacerX(0).pe_height(1).pe_backgroundColor(UIColor.grayColor),
         [UIStackView rowWithViews:[data jk_map:^id(id object) {
         return [UIStackView columnWithViews:[object[@"data"] jk_map:^id(id object) {
             return [UIStackView columnWithViews:@[

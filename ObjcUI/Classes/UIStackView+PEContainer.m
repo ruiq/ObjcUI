@@ -69,4 +69,20 @@
     [self setNeedsLayout];
 }
 
+-(UIStackView *(^)(CGFloat))pe_spacing
+{
+    return ^(CGFloat spacing) {
+        self.spacing = spacing;
+        return self;
+    };
+}
+
+-(UIStackView *(^)(UIStackViewAlignment))pe_alignment
+{
+    return ^(UIStackViewAlignment alignment) {
+        self.alignment = alignment;
+        return self;
+    };
+}
+
 @end

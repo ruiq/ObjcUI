@@ -12,8 +12,17 @@
 #import "NSArray+JKBlock.h"
 #import "Masonry.h"
 #import <JKCategories/UIColor+JKHEX.h>
+#import <objc/runtime.h>
 
 @implementation UIView (PE)
+
+-(UIView *(^)(void (^configBlock)(id)))pe_config
+{
+    return ^(void (^configBlock)(id)) {
+        configBlock(self);
+        return self;
+    };
+}
 
 -(instancetype)config:(void (^)(id))configBlock
 {
@@ -26,26 +35,53 @@
     return self;
 }
 
-/*
+- (UITapGestureRecognizer *)tap_
+{
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setTap_:(UITapGestureRecognizer *)tap_
+{
+    objc_setAssociatedObject(self, @selector(tap_), tap_, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void(^)(void))tapBlock_
+{
+    return objc_getAssociatedObject(self, _cmd);
+}
+
+- (void)setTapBlock_:(void(^)(void))tapBlock_
+{
+    objc_setAssociatedObject(self, @selector(tapBlock_), tapBlock_, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+
 -(UIView *(^)(void (^)(void)))pe_onTap
 {
-    WS(weakSelf);
-    return ^(void (^onTap)(void)){
-        UITapGestureRecognizer *tap = [UITapGestureRecognizer new];
-        [tap.rac_gestureSignal subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x) {
-            if (onTap) {
-                onTap();
-            }
-        }];
-        weakSelf.userInteractionEnabled = YES;
-        [weakSelf addGestureRecognizer:tap];
-        return weakSelf;
+    return ^(void(^onTap)(void)){
+        UITapGestureRecognizer *tap = [self tap_];
+        if (!tap) {
+            tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(opTap:)];
+            [self setTap_:tap];
+        }
+        [self setTapBlock_:onTap];
+        self.userInteractionEnabled = YES;
+        [self addGestureRecognizer:tap];
+        return self;
     };
 }
-*/
+
+-(void)opTap:(UIGestureRecognizer *)tap
+{
+    void(^onTapBlock)(void) = [self tapBlock_];
+    if (onTapBlock) {
+        onTapBlock();
+    }
+}
 
 -(UIView *(^)(CGSize))pe_size
-{    return ^(CGSize size) {
+{
+    return ^(CGSize size) {
         [self mas_makeConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(size).priority(MASLayoutPriorityRequired);
         }];
@@ -110,16 +146,47 @@
     };
 }
 
--(UIView *(^)(bool (^)(void)))pe_hidden
+-(UIView *(^)(BOOL hidden))pe_hidden
 {
-    return ^(bool (^hiddenBlk)(void)){
-        if (hiddenBlk) {
-            self.hidden = hiddenBlk();
-        }
+    return ^(BOOL hidden) {
+        self.hidden = hidden;
         return self;
     };
 }
 
+-(UIView *(^)(void))pe_cicle
+{
+    return ^ {
+        CGSize size = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        CGFloat minSize = MIN(size.width, size.height);
+        self.layer.cornerRadius = minSize / 2.0;
+        self.layer.masksToBounds = YES;
+        return self;
+    };
+}
+
+-(UIView *(^)(UIColor *))pe_borderColor
+{
+    return ^ (UIColor *borderColor){
+        self.layer.borderColor = borderColor.CGColor;
+        return self;
+    };
+}
+
+-(UIView *(^)(CGFloat))pe_borderWidth
+{
+    return ^ (CGFloat borderWidth){
+        self.layer.borderWidth = borderWidth;
+        return self;
+    };
+}
+-(UIView *(^)(CGFloat))pe_cornerRadius
+{
+    return ^ (CGFloat cornerRadius){
+        self.layer.cornerRadius = cornerRadius;
+        return self;
+    };
+}
 
 -(UIView *(^)(UIColor *))pe_backgroundColor
 {
@@ -144,10 +211,18 @@
     };
 }
 
++(PESingleChildView *(^)(UIView *))pe_child
+{
+    return ^(UIView *sv) {
+        PESingleChildView *view = PESingleChildView.new;
+        [view addSubview:sv];
+        return self;
+    };
+}
 
 +(instancetype)viewWithWidth:(double)width
 {
-    if (width == -1) {
+    if (width <= 0) {
         return [self spacerX];
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, 0)];
@@ -162,7 +237,7 @@
 
 +(instancetype)viewWithHeight:(double)height
 {
-    if (height == -1) {
+    if (height <= 0) {
         return [self spacerY];
     }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, height)];
@@ -278,58 +353,6 @@
 
 @end
 
-@implementation UILabel (PE)
-
-#pragma mark - 快速创建Label
-+ (instancetype)labelWithFont:(UIFont *)font
-                    textColor:(UIColor *)textColor {
-    return [self labelWithFont:font textColor:textColor text:@""];
-}
-+ (instancetype)labelWithFont:(UIFont *)font
-                    textColor:(UIColor *)textColor
-                         text:(NSString *)text {
-    return [self labelWithFont:font textColor:textColor text:text numberOfLines:1];
-}
-+ (instancetype)labelWithFont:(UIFont *)font
-                    textColor:(UIColor *)textColor
-                         text:(NSString *)text
-                numberOfLines:(NSInteger)numberOfLines {
-    return [self labelWithFont:font textColor:textColor text:text numberOfLines:numberOfLines textAlignment:NSTextAlignmentLeft];
-}
-
-+ (instancetype)labelWithFont:(UIFont *)font
-                    textColor:(UIColor *)textColor
-                         text:(NSString *)text
-                numberOfLines:(NSInteger)numberOfLines
-                textAlignment:(NSTextAlignment)textAlignment {
-    UILabel *label = [UILabel new];
-    label.font =  font;
-    label.textColor = textColor;
-    label.text = text;
-    label.textAlignment = textAlignment;
-    label.numberOfLines = numberOfLines;
-    if (numberOfLines != 1) {
-        [label setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisVertical];
-    }
-    return label;
-}
-
--(void)setIcon:(UIImage *)icon space:(double)space text:(NSString *)text
-{
-    NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
-    imageAttachment.image = icon;
-    CGFloat imageOffsetY = -5.0;
-    imageAttachment.bounds = CGRectMake(0, imageOffsetY, imageAttachment.image.size.width, imageAttachment.image.size.height);
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
-    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
-    [completeText appendAttributedString:attachmentString];
-    NSAttributedString *textAfterIcon = [[NSAttributedString alloc] initWithString:text];
-    [completeText appendAttributedString:textAfterIcon];
-    self.attributedText = completeText;
-}
-
-@end
-
 @implementation UIButton (PE)
 
 +(UIButton *)buttonWithTitle:(NSString *)title
@@ -379,4 +402,3 @@
 
 
 @end
-

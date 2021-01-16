@@ -148,7 +148,7 @@ PODS:
   - JKCategories/UIKit/UIViewController (1.9.2)
   - JKCategories/UIKit/UIWindow (1.9.2)
   - Masonry (1.1.0)
-  - OCUI (0.1.1):
+  - OCUI (0.1.2):
     - JKCategories (~> 1.9.1)
     - Masonry (~> 1.1.0)
   - ReactiveCocoa (10.3.0):
@@ -191,7 +191,7 @@ SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   JKCategories: 83d85cc7455e265fbdb2f4add3c77c643fad57f5
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  OCUI: e94f5ce0d66e7d45e8e5b0772ff545637aae3d68
+  OCUI: e184e794a301ad749bf1e2e2a26f3e6381a4a669
   ReactiveCocoa: 083ae559e6f588ce519cab412ea119b431c26a24
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   ReactiveSwift: 8d159904084e908856cde90b2e28823f3c7e485f
