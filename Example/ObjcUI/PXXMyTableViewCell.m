@@ -70,13 +70,13 @@
                         SpacerY(12),
                         VStack(@[
                             [weakSelf imageViewsWithUser:weakSelf.user],
-                            SpacerY(12)])
+                            SpacerY(12)
+                               ])
                         .pe_config(^(UIView *v) {
                             RAC(v,hidden) = [RACObserve(weakSelf.user, images) map:^id _Nullable(id  _Nullable value) {
                                 return @([value count] == 0);
                             }];
                     }),
-                        SpacerY(12),
                         [weakSelf footerViewWithUser:weakSelf.user],
                         SpacerY(12),
                     ]).pe_alignment(UIStackViewAlignmentLeading),
@@ -160,7 +160,9 @@
     .pe_padding(UIEdgeInsetsMake(4, 8, 4, 8))
     .pe_borderWidth(0.5)
     .pe_borderColor(UIColor.lightGrayColor)
-    .pe_cornerRadius(4);
+    .pe_cornerRadius(4).pe_onTap(^{
+        NSLog(@"%@",text);
+    });
 }
 
 -(UIView *)imageViewsWithUser:(PXXUser *)user
@@ -181,7 +183,9 @@
                 for (int cIndex = 0; cIndex < columnNUmber; cIndex++) {
                     index = rIndex * columnNUmber + cIndex;
                     if (index < x.count) {
-                        [htv addArrangedSubview:Text(x[index]).pe_textAlignment(NSTextAlignmentCenter).pe_size(CGSizeMake(80, 80)).pe_backgroundColor(imageBackgroundColor)];
+                        [htv addArrangedSubview:Text(x[index]).pe_textAlignment(NSTextAlignmentCenter).pe_size(CGSizeMake(80, 80)).pe_backgroundColor(imageBackgroundColor).pe_onTap(^{
+                            NSLog(@"%@",x[index]);
+                        })];
                     }
                     else {
                         break;
@@ -202,7 +206,10 @@
         RAC(v,text) = RACObserve(user, sendTime);
     }),
                   SpacerX(0),
-                  Text(@"···").pe_font([UIFont systemFontOfSize:16]).pe_textColor(UIColor.grayColor)
+        HStack(@[SpacerX(20),
+                 Text(@"···").pe_font([UIFont systemFontOfSize:16]).pe_textColor(UIColor.grayColor),]).pe_onTap(^{
+            NSLog(@"点击了更多按钮（横向放大点击区域）");
+    })
                   ]);
 }
 
