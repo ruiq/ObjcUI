@@ -15,3 +15,6 @@
 static inline UIImageView* Image(NSString *named) {
     return [[UIImageView alloc] initWithImage:[UIImage imageNamed:named]];
 }
+static inline UIImageView* Icon(UIImage *iconImage) {
+    return [[UIImageView alloc] initWithImage:iconImage];
+}

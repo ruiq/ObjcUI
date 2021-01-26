@@ -38,4 +38,10 @@
 static inline UILabel* Text(NSString *text) {
     return UILabel.new.pe_text(text);
 }
+static inline UILabel* Text2(NSString *text,UIColor *textColor) {
+    return UILabel.new.pe_text(text);
+}
+static inline UILabel* Text3(NSString *text,UIColor *textColor,UIFont *font) {
+    return UILabel.new.pe_text(text);
+}
 

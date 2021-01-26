@@ -1,5 +1,5 @@
 //
-//  UIStackView+PEContainer.h
+//  UIStackView+OCUI.h
 //  pxxedu
 //
 //  Created by ruiq on 2020/12/10.
@@ -17,9 +17,6 @@
 +(instancetype)columnWithViews:(NSArray<UIView *> *)views;
 +(instancetype)columnWithViews:(NSArray<UIView *> *)views alignment:(UIStackViewAlignment)alignment;
 +(instancetype)columnWithViews:(NSArray<UIView *> *)views alignment:(UIStackViewAlignment)alignment spacing:(CGFloat)spacing;
-
--(void)updateWithArrangedSubviews:(NSArray<UIView *> *)views;
-
 
 -(UIStackView *(^)(UIStackViewAlignment))pe_alignment;
 -(UIStackView *(^)(CGFloat))pe_spacing;

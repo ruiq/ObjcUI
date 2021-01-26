@@ -77,6 +77,7 @@
         [users addObject:u];
     }
     self.data = users;
+    
     [self.tableView reloadData];
 }
 
@@ -102,6 +103,14 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    self.data[indexPath.row].isFollowed = !self.data[indexPath.row].isFollowed;
 //    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+    });
 }
 
 @end

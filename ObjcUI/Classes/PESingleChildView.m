@@ -6,20 +6,21 @@
 //
 
 #import "PESingleChildView.h"
-#import <Masonry/Masonry.h>
 
 @implementation PESingleChildView
 
 - (void)addSubview:(UIView *)subView
 {
-    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    if (self.subviews.count != 0) {
+        [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    }
     [super addSubview:subView];
 }
 
 -(PESingleChildView *(^)(UIEdgeInsets padding))pe_padding
 {
     return ^(UIEdgeInsets padding) {
-        [self.subviews.firstObject mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.subviews.firstObject mas_updateConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(padding).priority(1000);
         }];
         return self;

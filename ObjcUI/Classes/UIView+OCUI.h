@@ -1,5 +1,5 @@
 //
-//  UIView+PE.h
+//  UIView+OCUI.h
 //  pxxedu
 //
 //  Created by ruiq on 2020/8/14.
@@ -11,14 +11,9 @@
 
 static NSUInteger const kBackgroundViewTag = 432847;
 /// 宽度占位view
-#define kWidth(w) [UIView viewWithWidth:w]
+#define kWidth(w) SpacerX(w)
 /// 高度占位view
 #define kHeight(h) [UIView viewWithHeight:h]
-
-/// 宽度占位view
-#define SpacerX(w) [UIView viewWithWidth:w]
-/// 高度占位view
-#define SpacerY(h) [UIView viewWithHeight:h]
 
 @interface UIView (PE)
 
@@ -27,7 +22,6 @@ static NSUInteger const kBackgroundViewTag = 432847;
 /// 高度占位view ，0表示纵向填充view（placeholderY）
 +(instancetype)viewWithHeight:(double)height;
 
-+(instancetype)spacer;
 +(instancetype)spacerX;
 +(instancetype)spacerY;
 
@@ -51,6 +45,7 @@ static NSUInteger const kBackgroundViewTag = 432847;
 -(UIView *(^)(CGFloat))pe_cornerRadius;
 -(UIView *(^)(CGFloat))pe_borderWidth;
 -(UIView *(^)(UIColor *))pe_borderColor;
+-(UIView *(^)(UIView *))pe_addSubview;
 
 @end
 

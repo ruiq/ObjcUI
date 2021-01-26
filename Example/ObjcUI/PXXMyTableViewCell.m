@@ -7,8 +7,8 @@
 //
 
 #import "PXXMyTableViewCell.h"
-#import <UIStackView+PEContainer.h>
-#import <UIView+PE.h>
+#import <UIStackView+OCUI.h>
+#import <UIView+OCUI.h>
 #import <UIColor+JKRandom.h>
 #import <UIColor+JKHEX.h>
 #import <ReactiveObjC.h>
@@ -18,7 +18,13 @@
 #import <UILabel+OCUI.h>
 #import <UIImageView+OCUI.h>
 #import <NSArray+JKBlock.h>
+#import <PESpacer.h>
 
+@interface PXXMyTableViewCell ()
+
+@property (nonatomic,strong) UIStackView *containerView;
+
+@end
 @implementation PXXMyTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -28,7 +34,7 @@
         
         _user = PXXUser.new;
         __weak typeof(self) weakSelf = self;
-        UIStackView *containerView = HStack(@[
+        self.containerView = HStack(@[
             SpacerX(20),
             VStack(@[
                 SpacerY(20),
@@ -59,7 +65,7 @@
                             }];
                         }),
                         Text(weakSelf.user.desc)
-                        .pe_textColor([UIColor jk_colorWithHexString:@"#333333"])
+                        .pe_textColor([UIColor jk_colorWithHexString:@"#999999"])
                         .pe_numberOfLines(0)
                         .pe_config(^(UILabel *v) {
                             RAC(v,text) = RACObserve(weakSelf.user, desc);
@@ -85,8 +91,8 @@
                    ]).pe_alignment(UIStackViewAlignmentTop),
             SpacerX(20)
         ]).pe_alignment(UIStackViewAlignmentTop);
-        [self.contentView addSubview:containerView];
-        [containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        [self.contentView addSubview:self.containerView];
+        [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(UIEdgeInsetsZero).priority(1000);
             make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width);
         }];
@@ -95,18 +101,27 @@
     return self;
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.containerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(UIEdgeInsetsZero).priority(1000);
+        make.width.mas_equalTo(UIScreen.mainScreen.bounds.size.width);
+    }];
+}
+
 -(UIView *)userCardWithUser:(PXXUser *)user
 {
     return HStack(@[
         VStack(@[
-                    Text(user.name)
-                    .pe_textColor([UIColor jk_colorWithHexString:@"#333333"])
+                    Text(@"")
+                    .pe_textColor(UIColor.redColor)
                     .pe_font([UIFont systemFontOfSize:14])
                     .pe_config(^(UILabel *v) {
                         RAC(v,text) = RACObserve(user, name);
                     })
                     .pe_onTap(^{
-                        NSLog(@"tap name");
+                        NSLog(@"tap name aaaa");
                     }),
                     SpacerY(8),
                     Text(user.address)
@@ -121,13 +136,18 @@
                     }),
                ]).pe_alignment(UIStackViewAlignmentLeading),
         SpacerX(0),
+        Container(
         Text(user.desc)
-        .pe_textColor([UIColor jk_colorWithHexString:@"#333333"])
-        .pe_config(^(UILabel *v) {
+                  .pe_textAlignment(NSTextAlignmentCenter)
+                  .pe_textColor([UIColor jk_colorWithHexString:@"#333333"])
+                  .pe_config(^(UILabel *v) {
             RAC(v,text) = [RACObserve(user, isFollowed) map:^id _Nullable(id  _Nullable value) {
                 return [value boolValue] ? @"💖" : @"❤️";
             }];
-        })
+        }))
+        .pe_size(CGSizeMake(50, 50))
+        .pe_backgroundColor(UIColor.lightGrayColor)
+        .pe_cicle()
         .pe_onTap(^{
             NSLog(@"tap heart");
         user.isFollowed = !user.isFollowed;
